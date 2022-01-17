@@ -55,17 +55,7 @@
         </dependency>
         <dependency>
             <groupId>com.slack.api</groupId>
-            <artifactId>bolt</artifactId>
-            <version>1.16.1</version>
-          </dependency>
-          <dependency>
-            <groupId>com.slack.api</groupId>
-            <artifactId>bolt-servlet</artifactId>
-            <version>1.16.1</version>
-          </dependency>
-          <dependency>
-            <groupId>com.slack.api</groupId>
-            <artifactId>bolt-jetty</artifactId> <!-- will resolve "bolt" and "bolt-servlet" artifacts as its dependencies -->
+            <artifactId>slack-api-client</artifactId>
             <version>1.16.1</version>
           </dependency>
           <dependency>

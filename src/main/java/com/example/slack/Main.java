@@ -1,23 +1,14 @@
 package com.example.slack;
 
-import com.slack.api.bolt.App;
-import com.slack.api.bolt.jetty.SlackAppServer;
+import com.slack.api.Slack;
+import com.slack.api.methods.response.chat.ChatPostMessageResponse;
 
 public class Main {
     
     public static void main(String[] args) throws Exception {
-        var app = new App();
-        app.command("/hello", (req, ctx) -> {
-            String text = req.getPayload().getText();
-            if (text != null && !text.isEmpty()) {
-                return ctx.ack(
-                    ":tada: Yeah! Nice to meet you, " + text + "! :tada:"
-                );
-            } else {
-                return ctx.ack("Please type your name. :sob:");
-            }
-        });
-        var server = new SlackAppServer(app);
-        server.start();
-    }
+        Slack slack = Slack.getInstance();
+        String token = System.getenv("SLACK_BOT_TOKEN");
+        // Build a request object
+        ChatPostMessageResponse response = slack.methods(token).chatPostMessage(req -> req.channel("#random").text(":wave: Hi from a bot written in Java!"));
+      }
 }
